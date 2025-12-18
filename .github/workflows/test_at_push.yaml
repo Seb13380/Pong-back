@@ -1,0 +1,23 @@
+name: Test at push
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout frontend
+        uses: actions/checkout@v6.0.1
+
+      - name: Setup Docker
+        uses: docker/setup-docker-action@v4.6.0
+
+      - name: Build image
+        run: docker build -t pong-back .
+
+      - name: Run tests
+        run: |
+          docker run -d --name pong-container pong-back
+          docker exec pong-container npm run test
