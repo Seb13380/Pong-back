@@ -28,4 +28,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_PAT  }}
         run: |
-          gh workflow run deploy.yml --repo Bluelagoon44/Pong-infra -f source=backend
+          gh workflow run deploy.yml --repo Seb13380/Pong-infra -f source=backend
